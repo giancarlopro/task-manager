@@ -8,27 +8,40 @@
 	<body>
 		<section layout:fragment="content">
 			<div class="container">
-				<h3 class="center-align">Tarefas</h3>
-				<form>
+				<h4 class="center-align">Nova tarefa</h4>
+				<form th:action="@{/tasks}" method="POST" th:object="${task}">
+					<input type="hidden" th:field="*{id}" />
 					<div class="row">
-						<div class="col s6">
-							<label for="nome">
-								<span>Nome</span>
-								<input type="text" name="nome" id="nome" />
-							</label>
+						<div class="col s5">
+							<input type="text" th:field="*{nome}" placeholder="Nome..." />
 						</div>
-						<div class="col s6">
-							<label for="descricao">
-								<span>Descrição</span>
-								<input type="text" name="descricao" id="descricao" />
-							</label>
+						<div class="col s5">
+							<input type="text" th:field="*{descricao}" placeholder="Descrição..." />
 						</div>
-					</div>
-					<div class="row center-align">
-						<button class="btn waves-effect waves-light" type="submit" name="action">Cadastrar</button>
+						<div class="col s2">
+							<button class="btn waves-effect waves-light" type="submit" name="action">Cadastrar</button>
+						</div>
 					</div>
 				</form>
+				
+				<h4 class="center-align">Tarefas</h4>
+				<table>
+					<thead>
+						<th>#</th>
+						<th>Nome</th>
+						<th>Descrição</th>
+						<th>Ações</th>
+					</thead>
+					<tbody>
+						<tr th:each="task : ${tasks}">
+							<td th:text="${task.id}"></td>
+							<td th:text="${task.nome}"></td>
+							<td th:text="${task.descricao}"></td>
+							<td><a th:href="@{/tasks/} + ${task.id} + ${'/done'}">Finalizar</a></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</section>
 	</body>
-</html>	
+</html>

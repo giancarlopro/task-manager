@@ -16,7 +16,7 @@ public class Task {
 	
 	private String descricao;
 	
-	private boolean ativo;
+	private boolean ativo = true;
 	
 	@ManyToOne
 	private User user;
@@ -54,5 +54,21 @@ public class Task {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Attachment getAttachment() {
+		return attachment;
+	}
+
+	public void setAttachment(Attachment attachment) {
+		this.attachment = attachment;
 	}
 }

@@ -31,13 +31,21 @@
 			      <a th:href="@{/}" class="brand-logo">TaskManager</a>
 			      <ul id="nav-mobile" class="right hide-on-med-and-down">
 			        <li><a th:href="@{/tasks}">Tasks</a></li>
-			        <li><a th:href="@{/login}">Login</a></li>
+			        <li><a th:href="@{/users/logout}">Sair</a></li>
 			      </ul>
 			    </div>
 		 	</div>
 		</nav>
 	</header>
-
+	<div th:if="${success}" class="green">
+		<p style="color: white;" class="center-align" th:text="${success}"></p>
+	</div>
+	<div th:if="${error}" class="red">
+		<p style="color: white;" class="center-align" th:text="${error}"></p>
+	</div>
+	<div th:if="${info}" class="blue">
+		<p style="color: white;" class="center-align" th:text="${info}"></p>
+	</div>
 	<section layout:fragment="content">
 	</section>
 	
@@ -52,7 +60,7 @@
           </div>
 		<div class="footer-copyright">
             <div class="container">
-            	© 2019 Giancarlo Rocha & Brendo Monteiro
+            	© 2019 Giancarlo, Brendo & Paulo 
             </div>
     	</div>
 	</footer>

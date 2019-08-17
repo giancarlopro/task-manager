@@ -7,21 +7,26 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String nome;
-	
+
 	private String descricao;
-	
+
 	private boolean ativo = true;
-	
+
 	@ManyToOne
+	@JsonIgnore
 	private User user;
-	
+
 	@OneToOne
 	private Attachment attachment;
 

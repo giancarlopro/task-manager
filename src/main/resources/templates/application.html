@@ -1,68 +1,68 @@
 <!DOCTYPE html>
-<html 
-	xmlns="http://www.w3.org/1999/xhtml" 
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width" />
-	<title>TaskManager Web App</title>
-	<link rel="stylesheet" th:href="@{/webjars/materializecss/1.0.0/css/materialize.min.css}" />
-	<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
-	<script th:src="@{/webjars/materializecss/1.0.0/js/materialize.min.js}"></script>
-	<style>
-		body {
-			display: flex;
-		    min-height: 100vh;
-		    flex-direction: column;
-		 }
-		
-		 section {
-		    flex: 1 0 auto;
-		 }
-	</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>TaskManager Web App</title>
+  <link rel="stylesheet" th:href="@{/webjars/materializecss/1.0.0/css/materialize.min.css}" />
+  <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+  <script th:src="@{/webjars/materializecss/1.0.0/js/materialize.min.js}"></script>
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    section {
+      flex: 1 0 auto;
+    }
+  </style>
 </head>
+
 <body>
-	<header>
-		<nav class="indigo">
-			<div class="container">
-			    <div class="nav-wrapper indigo">
-			      <a th:href="@{/}" class="brand-logo">TaskManager</a>
-			      <ul id="nav-mobile" class="right hide-on-med-and-down">
-			        <li><a th:href="@{/tasks}">Tasks</a></li>
-			        <li><a th:href="@{/users/logout}">Sair</a></li>
-			      </ul>
-			    </div>
-		 	</div>
-		</nav>
-	</header>
-	<div th:if="${success}" class="green">
-		<p style="color: white;" class="center-align" th:text="${success}"></p>
-	</div>
-	<div th:if="${error}" class="red">
-		<p style="color: white;" class="center-align" th:text="${error}"></p>
-	</div>
-	<div th:if="${info}" class="blue">
-		<p style="color: white;" class="center-align" th:text="${info}"></p>
-	</div>
-	<section layout:fragment="content">
-	</section>
-	
-	<footer class="page-footer indigo">
-	<div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Task Manager</h5>
-                <p class="grey-text text-lighten-4">Keep track of your tasks!</p>
-              </div>
-            </div>
-          </div>
-		<div class="footer-copyright">
-            <div class="container">
-            	© 2019 Giancarlo, Brendo & Paulo 
-            </div>
-    	</div>
-	</footer>
+  <header>
+    <nav class="indigo">
+      <div class="container">
+        <div class="nav-wrapper indigo">
+          <a th:href="@{/}" class="brand-logo">TaskManager</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a th:href="@{/tasks}">Tasks</a></li>
+            <li><a th:href="@{/users/logout}">Sair</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div th:if="${success}" class="green">
+    <p style="color: white;" class="center-align" th:text="${success}"></p>
+  </div>
+  <div th:if="${error}" class="red">
+    <p style="color: white;" class="center-align" th:text="${error}"></p>
+  </div>
+  <div th:if="${info}" class="blue">
+    <p style="color: white;" class="center-align" th:text="${info}"></p>
+  </div>
+  <section layout:fragment="content">
+  </section>
+
+  <footer class="page-footer indigo">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Task Manager</h5>
+          <p class="grey-text text-lighten-4">Keep track of your tasks!</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2019 Giancarlo, Brendo & Paulo
+      </div>
+    </div>
+  </footer>
 </body>
-</html>	
+
+</html>

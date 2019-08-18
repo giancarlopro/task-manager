@@ -24,3 +24,22 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+:root {
+    --ion-color-indigo: #3f00ff;
+    --ion-color-indigo-rgb: 63,0,255;
+    --ion-color-indigo-contrast: #ffffff;
+    --ion-color-indigo-contrast-rgb: 255,255,255;
+    --ion-color-indigo-shade: #3700e0;
+    --ion-color-indigo-tint: #521aff;
+}
+
+.ion-color-indigo {
+    --ion-color-base: var(--ion-color-indigo);
+    --ion-color-base-rgb: var(--ion-color-indigo-rgb);
+    --ion-color-contrast: var(--ion-color-indigo-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-indigo-contrast-rgb);
+    --ion-color-shade: var(--ion-color-indigo-shade);
+    --ion-color-tint: var(--ion-color-indigo-tint);
+}
+  

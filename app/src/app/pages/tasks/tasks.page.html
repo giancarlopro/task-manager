@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="indigo">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Task Manager
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<app-menu></app-menu>
+<ion-fab vertical="bottom" horizontal="end">
+  <ion-fab-button color="indigo" (click)="addTaskAlert()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<ion-content id="content">
+  <ion-refresher (ionRefresh)="refreshTasks($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngFor="let task of tasks;">
+    <ion-item>
+      <ion-icon slot="end" name="close" (click)="removeTask(task.id)"></ion-icon>
+      <ion-label>{{task.nome}}</ion-label>
+    </ion-item>
+    <!-- <ion-card-header>
+      <ion-card-title>{{task.nome}}</ion-card-title>
+    </ion-card-header> -->
+    <ion-card-content>
+      <ion-row>
+        {{task.descricao}}
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

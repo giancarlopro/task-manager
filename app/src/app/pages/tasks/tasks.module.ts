@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { TasksPage } from './tasks.page';
 import { MenuComponent } from 'src/app/components/menu/menu.component';
+import { TaskManagerApiService } from 'src/app/services/task-manager-api.service';
 
 const routes: Routes = [
   {
@@ -22,6 +23,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [TasksPage, MenuComponent]
+  declarations: [TasksPage, MenuComponent],
 })
 export class TasksPageModule {}

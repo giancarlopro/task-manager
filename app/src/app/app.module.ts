@@ -11,15 +11,19 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { MenuComponent } from './components/menu/menu.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { TaskManagerApiService } from './services/task-manager-api.service';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    TaskManagerApiService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

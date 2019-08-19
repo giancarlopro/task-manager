@@ -19,18 +19,20 @@
   <ion-refresher (ionRefresh)="refreshTasks($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-card *ngFor="let task of tasks;">
-    <ion-item>
-      <ion-icon slot="end" name="close" (click)="removeTask(task.id)"></ion-icon>
-      <ion-label>{{task.nome}}</ion-label>
-    </ion-item>
-    <!-- <ion-card-header>
-      <ion-card-title>{{task.nome}}</ion-card-title>
-    </ion-card-header> -->
-    <ion-card-content>
-      <ion-row>
-        {{task.descricao}}
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
+  <div *ngFor="let task of tasks;">
+    <ion-card *ngIf="task.ativo">
+      <ion-item>
+        <ion-icon slot="end" name="close" (click)="removeTask(task.id)"></ion-icon>
+        <ion-label>{{task.nome}}</ion-label>
+      </ion-item>
+      <!-- <ion-card-header>
+        <ion-card-title>{{task.nome}}</ion-card-title>
+      </ion-card-header> -->
+      <ion-card-content>
+        <ion-row>
+          {{task.descricao}}
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

@@ -3,6 +3,7 @@ package com.giancarlo.taskmanager.controller;
 import com.giancarlo.taskmanager.repository.Tasks;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.giancarlo.taskmanager.model.Task;
 
 @RestController
 @RequestMapping("/api/tasks")
+@CrossOrigin
 public class TasksAPIController {
 
     @Autowired
@@ -56,5 +58,14 @@ public class TasksAPIController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         tasksRepository.deleteById(id);
+    }
+
+    @GetMapping("/{id}/done")
+    public void done(@PathVariable Long id) {
+        // Task task = tasksRepository.getOne(id);
+        tasksRepository.findById(id).map(task -> {
+            task.setAtivo(false);
+            return tasksRepository.save(task);
+        });
     }
 }

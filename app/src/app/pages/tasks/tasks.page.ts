@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from 'src/app/interfaces/task';
 import { AlertController } from '@ionic/angular';
+import { TaskManagerApiService } from 'src/app/services/task-manager-api.service';
 
 @Component({
   selector: 'app-tasks',
@@ -10,31 +11,42 @@ import { AlertController } from '@ionic/angular';
 export class TasksPage implements OnInit {
   tasks: Task[] = []
 
-  constructor(private alertController: AlertController) { }
+  constructor(
+    private alertController: AlertController,
+    private taskManagerApiService: TaskManagerApiService
+  ) {
+    console.log(this.taskManagerApiService.getAllTasks())
+  }
 
   ngOnInit() {
+    this.taskManagerApiService.getAllTasks().subscribe(data => this.tasks = data)
   }
 
   refreshTasks(event) {
-    this.tasks.push({id: 1, descricao: "Fazer ação 1", nome: "Tarefa 1"})
-
-    setTimeout(() => event.target.complete(), 2000)
+    setTimeout(_ => {
+      this.taskManagerApiService.getAllTasks().subscribe(data => this.tasks = data)
+      event.target.complete()
+    }, 1000)
   }
 
   removeTask(id) {
-    this.tasks = this.tasks.filter((task) => task.id != id)
+    this.taskManagerApiService.finishTask(id).subscribe(_ => {
+      this.tasks = this.tasks.filter((task) => task.id != id)
+    })
   }
 
   async addTaskAlert() {
     let alerta = await this.alertController.create({
-      header: "New Task",
+      header: "Nova Tarefa",
       buttons: [
         "Cancel",
         {
           text: "OK",
           handler: data => {
             if (!(data.nome == '' || (data.nome == '' && data.descricao == ''))) {
-              this.tasks.push({id: null, nome: data.nome, descricao: data.descricao})
+              this.taskManagerApiService.createTask(data.nome, data.descricao).subscribe(
+                task => this.tasks.push(task)
+              )
             }
           }
         }
@@ -44,7 +56,7 @@ export class TasksPage implements OnInit {
           type: "text",
           name: "nome",
           placeholder: "Nome:"
-        },{
+        }, {
           type: "text",
           name: "descricao",
           label: "Descrição:",

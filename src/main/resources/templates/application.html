@@ -29,8 +29,9 @@
         <div class="nav-wrapper indigo">
           <a th:href="@{/}" class="brand-logo">TaskManager</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a th:href="@{/tasks}">Tasks</a></li>
-            <li><a th:href="@{/users/logout}">Sair</a></li>
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/tasks}">Tasks</a></li>
+            <li sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/users}">Usuários</a></li>
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Sair</a></li>
           </ul>
         </div>
       </div>

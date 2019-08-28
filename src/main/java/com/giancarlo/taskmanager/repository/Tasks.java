@@ -8,5 +8,5 @@ import com.giancarlo.taskmanager.model.Task;
 
 public interface Tasks extends JpaRepository<Task, Long>{
 	List<Task> findByAtivo(boolean ativo);
-	List<Task> findByUserIdAndAtivo(Long userId, boolean ativo);
+	List<Task> findByUserIdAndAtivoTrue(Long userId);
 }
